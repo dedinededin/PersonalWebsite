@@ -4,10 +4,10 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return render(request, 'mysite/index.html')
+    return render(request, 'mysite/index.html', {'nbar':'home'})
 
 def portfolio(request):
-    return render(request, 'mysite/portfolio.html')
+    return render(request, 'mysite/portfolio.html', {'nbar':'portfolio'})
 
 def contact(request):
-    return render(request, 'mysite/contact.html')
+    return render(request, 'mysite/contact.html', {'nbar':'contact'})
