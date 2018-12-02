@@ -24,9 +24,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mx-auto">
-                <a class="nav-item nav-link {% if nbar == 'home' %}active{% endif %}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link {% if nbar == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
-                <a class="nav-item nav-link {% if nbar == 'portfolio' %}active{% endif %}" href="{% url 'portfolio' %}">Portfolio</a>
+                <a class="nav-item nav-link {{ home }}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link {{ contact }}" href="{% url 'contact' %}">Contact</a>
+                <a class="nav-item nav-link {{ portfolio }}" href="{% url 'portfolio' %}">Portfolio</a>
             </ul>
         </div>
 
