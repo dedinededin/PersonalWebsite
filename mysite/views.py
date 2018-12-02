@@ -1,7 +1,13 @@
 from django.shortcuts import render
 
+
 # Create your views here.
-from django.http import HttpResponse
 
 def index(request):
-    return  HttpResponse('Hello Abraham!')
+    return render(request, 'mysite/index.html')
+
+def portfolio(request):
+    return render(request, 'mysite/portfolio.html')
+
+def contact(request):
+    return render(request, 'mysite/contact.html')
