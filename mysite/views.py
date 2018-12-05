@@ -21,9 +21,18 @@ def index(request):
 
 
 def portfolio(request):
-    events = Event.objects.all()
-    context = {'portfolio': 'active', 'events': events}
-    return render(request, 'mysite/portfolio.html', context)
+    if request.user.is_authenticated:
+        profile = request.user.profile
+        friends = profile.friends.all()
+        owner_friends = EventOwner.objects.filter(profile__in=friends)
+        events = Event.objects.filter(owner__in=owner_friends.all())
+
+        context = {'portfolio': 'active','events':events }
+        return render(request, 'mysite/portfolio.html', context)
+
+    else:
+        context = {'portfolio': 'active'}
+        return render(request, 'mysite/portfolio.html', context)
 
 
 def contact(request):
