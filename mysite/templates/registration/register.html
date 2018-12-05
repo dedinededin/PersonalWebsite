@@ -1,0 +1,87 @@
+{% extends 'mysite/base.html' %}
+{% block content %}
+    <div class="container">
+
+
+        {% if next %}
+            <p>You can't access that page.</p>
+        {% endif %}
+
+        {% if next %}
+            <p>You can't access that page.</p>
+        {% endif %}
+
+        <form class="form-horizontal" method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            {% if form.errors %}
+                <p>There's something wrong with what you entered!</p>
+            {% endif %}
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Sign Up</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="id_username">Username</label>
+                    <div class="col-md-4">
+                        <input id="id_username" name="username" type="text" placeholder="username"
+                               class="form-control input-md" required="">
+                        <span class="help-block">{{ form.username.help_text }}</span>
+
+                            {% if form.username.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                {{ form.username.errors }}
+                                </div>
+                            {% endif %}
+
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="id_password1">Password</label>
+                    <div class="col-md-4">
+                        <input id="id_password1" name="password1" type="password" placeholder="password"
+                               class="form-control input-md" required="">
+                        <span class="help-block">{{ form.password1.help_text }}</span>
+                        {% if form.password1.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                {{ form.password1.errors }}
+                                </div>
+                            {% endif %}
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="id_password2">Password Again</label>
+                    <div class="col-md-4">
+                        <input id="id_password2" name="password2" type="password" placeholder="password"
+                               class="form-control input-md" required="">
+                        <span class="help-block">{{ form.password2.help_text }}</span>
+                        {% if form.password2.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                {{ form.password2.errors }}
+                                </div>
+                            {% endif %}
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                    <div class="col-md-4">
+
+
+                        <input type="submit" id="singlebutton" value="Sign Up" class="btn btn-success"/>
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+
+    </div>
+{% endblock %}
