@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Contact, Event, EventOwner
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from mysite.cinema_controller import get_films
 
 
 # Create your views here.
@@ -27,7 +28,7 @@ def portfolio(request):
         owner_friends = EventOwner.objects.filter(profile__in=friends)
         events = Event.objects.filter(owner__in=owner_friends.all())
 
-        context = {'portfolio': 'active','events':events }
+        context = {'portfolio': 'active', 'events': events}
         return render(request, 'mysite/portfolio.html', context)
 
     else:
@@ -68,3 +69,9 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+def explore(request):
+    films = get_films()
+    context = {'explore': 'active', 'films': films}
+    return render(request, 'mysite/explore.html', context)
